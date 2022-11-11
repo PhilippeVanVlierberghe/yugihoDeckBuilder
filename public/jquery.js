@@ -5,7 +5,7 @@ const ctx2 = $('#myChart2');
 const errorBackgroundColor = 'lightcoral';
 const backgroundColor = 'rgb(0, 180, 0)';
 //['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search','Stun'],
-const targets = [11, 12, 0, 1, 6, 6, 2, 2, 2];
+const targets = [8, 12, 3, 1, 6, 4, 3, 12, 2];
 
 let mainDeck;
 let extraDeck;
