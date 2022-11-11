@@ -51,24 +51,31 @@
         placeholder="Number of extender cards in the main deck?" min='0' max='60'> <!-- min='12' max='14'-->
 
       <br>
-      <label for="mainBom">Bom cards:</label>
+      <label for="mainBom">Bomb cards:</label>
       <input name='mainBom' id='mainBom' type="number" placeholder="Number of bom cards in the main deck?" min='0'
         max='60'><!-- min='2' max='3'-->
       <br>
       <label for="mainGarnet">Garnet cards:</label>
       <input name='mainGarnet' id='mainGarnet' type="number" placeholder="Number of garnet cards in the main deck?"
         min='0' max='60'><!-- Engine requirements -->
+      <br>
+      <label for="mainSearch">Search cards:</label>
+      <input name='mainSearch' id='mainSearch' type="number" placeholder="Number of search cards in the main deck?"
+        min='0' max='60'>
 
       <p>Non-Enging cards</p>
-      <label for="mainDefense">Defensive cards (hand trap):</label>
+      <label for="mainDefense">Defensive cards:</label>
       <input name='mainDefense' id='mainDefense' type="number" placeholder="Number of defensive cards in the main deck?"
         min='0' max='60'><!-- min='6' -->
       <br>
-      <label for="mainAntiStun">Anti stun cards (deblocker):</label>
+      <label for="mainAntiStun">Anti stun cards:</label>
       <input name='mainAntiStun' id='mainAntiStun' type="number"
         placeholder="Number of anti-stun cards in the main deck?" min='0' max='60'>
-        <!-- can be side deck cards -->
-
+      <!-- can be side deck cards -->
+      <br>
+      <label for="mainDraw">Draw cards:</label>
+      <input name='mainDraw' id='mainDraw' type="number" placeholder="Number of draw cards in the main deck?" min='0'
+        max='60'>
       </form>
     </div>
     <div class="block">
@@ -78,6 +85,22 @@
     <div class="block">
       <canvas id="myChart2" width="400" height="400"></canvas>
     </div>
+
+  </div>
+  <hr>
+  <div class="description">
+    <h3>Target descriptions:</d3>
+    <ul>
+      <li><strong>Starter</strong>: cards that can start your combo's without help from other cards, for example <strong>Aleister The Invoker</strong>.</li>
+      <li><strong>Extenders</strong>: cards that can special summon monters, for example <strong>Emergency Teleport</strong>.</li>
+      <li><strong>Bomb</strong>: cards that can clear the field, for example <strong>Dark Hole</strong>.</li>
+      <li><strong>Garnet</strong>: cards that you have to play but you don't want to draw them or see them in your starting hand, for example <strong>Gem-Knight Garnet</strong>.</li>
+      <li><strong>Defensive</strong>: hand traps, for example <strong>Infinite Impermanence</strong>.</li>
+      <li><strong>Anti-stun</strong>: cards that allow you to play the game again, for example <strong>Mystical Space Typhoon</strong>.</li>
+      <li><strong>Draw</strong>: cards that allow you to go at least +1 in card advantage, for example <strong>Pot of greed</strong>.</li>
+      <li><strong>Search</strong>: cards that search other cards, for example <strong>Elemental Hero Stratos</strong>.</li>
+
+    </ul>
 
   </div>
 

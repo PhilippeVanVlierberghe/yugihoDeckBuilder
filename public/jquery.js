@@ -25,6 +25,8 @@ let mainExtenders;
 let mainBom;
 let mainAntiStun;
 let mainDefense;
+let mainDraw;
+let mainSearch;
 
 let data = [20, 20, 20];
 let data2 = [5, 5, 5, 5, 5, 5];
@@ -95,11 +97,23 @@ jQuery(function () {
   });
 
   $('#mainAntiStun').on("change", function () {
-    console.log('mainAntiStun');
     mainAntiStun = $(this).val();
     data2[5] = mainAntiStun;
     checkDeck();
   });
+
+  $('#mainDraw').on("change", function () {
+    mainDraw = $(this).val();
+    data2[6] = mainDraw;
+    checkDeck();
+  });
+
+  $('#mainSearch').on("change", function () {
+    mainSearch = $(this).val();
+    data2[7] = mainSearch;
+    checkDeck();
+  });
+
 
 }
 );
@@ -133,10 +147,10 @@ let myChart = new Chart(ctx, {
 let myChart2 = new Chart(ctx2, {
   type: 'radar',
   data: {
-    labels: ['Starter', 'Extender', 'Bom', 'Garnet', 'Defensive', 'Anti-stun'],
+    labels: ['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search'],
     datasets: [{
       label: 'Targets',
-      data: [11, 12, 0, 1, 6, 6],
+      data: [11, 12, 0, 1, 6, 6, 2, 2],
       fill: true,
       backgroundColor: 'rgba(192,192,192,0.3',
       borderColor: 'rgb(0, 0, 0)',
