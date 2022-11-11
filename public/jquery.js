@@ -95,6 +95,7 @@ jQuery(function () {
   });
 
   $('#mainAntiStun').on("change", function () {
+    console.log('mainAntiStun');
     mainAntiStun = $(this).val();
     data2[5] = mainAntiStun;
     checkDeck();
@@ -125,7 +126,7 @@ let myChart = new Chart(ctx, {
       y: {
         beginAtZero: true
       }
-    }
+    },
   }
 });
 
@@ -190,8 +191,7 @@ function checkDeck() {
     setError('The main deck can have a max of 60 cards.');
   } else if (parseInt(mainDeck) != (parseInt(mainDeckMonster) + parseInt(mainDeckSpell) + parseInt(mainDeckTrap))) {
     setError('Please check your card inputs again.');
-  }
-  else if (extraDeck > 15) {
+  } else if (extraDeck > 15) {
     setError('The extra deck can have a max of 15 cards.');
   } else if (sideDeck > 15) {
     setError('The side deck can have a max of 15 cards.');
