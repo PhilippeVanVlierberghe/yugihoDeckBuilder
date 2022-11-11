@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title of the document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script defer type="text/javascript" src="jquery.js"></script>
+  <script src="../node_modules/chart.js/dist/Chart.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+  <div class="error">
+    <h2 id="error"></h2>
+  </div>
+  <div id="container">    
+    <div class="block">
+      <form id='form' name='form'></form>
+      <p>Miscellaneous</p>
+      <label for="mainDeck">Main deck:</label>
+      <input type="number" id="mainDeck" name="mainDeck" placeholder="Number of cards in the main deck?" min='40'
+        max='60' />
+      <br>
+      <label for="extraDeck">Extra deck:</label>
+      <input name='extraDeck' id='extraDeck' type="number" placeholder="Number of cards in the extra deck?" min='0'
+        max='15'>
+      <br>
+      <label for="sideDeck">Side deck:</label>
+      <input name='sideDeck' id='sideDeck' type="number" placeholder="Number of cards in the side deck?" min='0'
+        max='15'>
+
+      <p>Enging cards</p>
+      <label for="mainDeckMonster">Monster cards:</label>
+      <input name='mainDeckMonster' id='mainDeckMonster' type="number"
+        placeholder="Number of monster cards in the main deck?" min='0' max='60'>
+      <br>
+      <label for="mainDeckSpell">Spell cards:</label>
+      <input name='mainDeckSpell' id='mainDeckSpell' type="number" placeholder="Number of spell cards in the main deck?"
+        min='0' max='60'>
+      <br>
+      <label for="mainDeckTrap">Trap cards:</label>
+      <input name='mainDeckTrap' id='mainDeckTrap' type="number" placeholder="Number of trap cards in the main deck?"
+        min='0' max='60'>
+      <br>
+      <label for="mainStarter">Starter cards:</label>
+      <input name='mainStarter' id='mainStarter' type="number" placeholder="Number of starter cards in the main deck?"
+        max='60'> <!-- min='11' max='13'-->
+      <br>
+      <label for="mainExtenders">Extender cards:</label>
+      <input name='mainExtenders' id='mainExtenders' type="number"
+        placeholder="Number of extender cards in the main deck?" min='0' max='60'> <!-- min='12' max='14'-->
+
+      <br>
+      <label for="mainBom">Bom cards:</label>
+      <input name='mainBom' id='mainBom' type="number" placeholder="Number of bom cards in the main deck?" min='0'
+        max='60'><!-- min='2' max='3'-->
+      <br>
+      <label for="mainGarnet">Garnet cards:</label>
+      <input name='mainGarnet' id='mainAntiStun' type="number" placeholder="Number of garnet cards in the main deck?"
+        min='0' max='60'><!-- Engine requirements -->
+
+      <p>Non-Enging cards</p>
+      <label for="mainDefense">Defensive cards:</label>
+      <input name='mainDefense' id='mainDefense' type="number" placeholder="Number of defensive cards in the main deck?"
+        min='0' max='60'><!-- min='6' -->
+      <br>
+      <label for="mainAntiStun">Anti stun cards:</label>
+      <input name='mainAntiStun' id='mainAntiStun' type="number"
+        placeholder="Number of anti-stun cards in the main deck?" min='0' max='60'><!-- can be side deck cards -->
+
+
+      <br>
+      <button type="submit"> Send </button>
+      </form>
+    </div>
+    <div class="block">
+      <canvas id="myChart" width="400" height="400"></canvas>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>

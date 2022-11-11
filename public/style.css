@@ -1,0 +1,22 @@
+#container {
+    margin-top: 1%;
+    display: flex;
+}
+
+#container .block {
+    width: 48%;
+}
+
+input {
+    width: 35%;
+    margin-bottom: 1%;
+}
+
+p {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.error h2 {
+    color: darkred;
+}
