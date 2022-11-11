@@ -1,17 +1,11 @@
 "use strict";
-
-//test Jquery
-/*
-if (window.jQuery) {
-  alert("Yeah!");
-} else {
-  alert("Doesn't Work");
-}*/
 const ctx = $('#myChart');
 const ctx2 = $('#myChart2');
 
 const errorBackgroundColor = 'lightcoral';
 const backgroundColor = 'lightgreen';
+//['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search'],
+const targets = [11, 12, 0, 1, 6, 6, 2, 2];
 
 let mainDeck;
 let extraDeck;
@@ -29,7 +23,7 @@ let mainDraw;
 let mainSearch;
 
 let data = [20, 20, 20];
-let data2 = [5, 5, 5, 5, 5, 5];
+let data2 = [5, 5, 5, 5, 5, 5, 5, 5];
 
 jQuery(function () {
   clearError();
@@ -113,8 +107,6 @@ jQuery(function () {
     data2[7] = mainSearch;
     checkDeck();
   });
-
-
 }
 );
 
@@ -134,13 +126,6 @@ let myChart = new Chart(ctx, {
       hoverOffset: 4
 
     }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    },
   }
 });
 
@@ -150,7 +135,7 @@ let myChart2 = new Chart(ctx2, {
     labels: ['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search'],
     datasets: [{
       label: 'Targets',
-      data: [11, 12, 0, 1, 6, 6, 2, 2],
+      data: targets,
       fill: true,
       backgroundColor: 'rgba(192,192,192,0.3',
       borderColor: 'rgb(0, 0, 0)',
