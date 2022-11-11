@@ -34,3 +34,7 @@ p {
     font-weight: 100;
     margin-left: 1%;
 }
+.block:not(:first-child){
+    background-color: lightgray;
+    border-radius: 5%;
+}
