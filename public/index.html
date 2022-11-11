@@ -60,11 +60,11 @@
         min='0' max='60'><!-- Engine requirements -->
 
       <p>Non-Enging cards</p>
-      <label for="mainDefense">Defensive cards:</label>
+      <label for="mainDefense">Defensive cards (hand trap):</label>
       <input name='mainDefense' id='mainDefense' type="number" placeholder="Number of defensive cards in the main deck?"
         min='0' max='60'><!-- min='6' -->
       <br>
-      <label for="mainAntiStun">Anti stun cards:</label>
+      <label for="mainAntiStun">Anti stun cards (deblocker):</label>
       <input name='mainAntiStun' id='mainAntiStun' type="number"
         placeholder="Number of anti-stun cards in the main deck?" min='0' max='60'><!-- can be side deck cards -->
 
@@ -75,8 +75,12 @@
     </div>
     <div class="block">
       <canvas id="myChart" width="400" height="400"></canvas>
-
     </div>
+
+    <div class="block">
+      <canvas id="myChart2" width="400" height="400"></canvas>
+    </div>
+
   </div>
 
 

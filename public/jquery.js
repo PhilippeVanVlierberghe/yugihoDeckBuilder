@@ -8,8 +8,10 @@ if (window.jQuery) {
   alert("Doesn't Work");
 }*/
 const ctx = $('#myChart');
+const ctx2 = $('#myChart2');
+
 const errorBackgroundColor = 'lightcoral';
-const backgroundColor = 'darkgrey' ;
+const backgroundColor = 'lightgreen';
 
 let mainDeck;
 let extraDeck;
@@ -22,11 +24,13 @@ let mainStarter;
 let mainExtenders;
 let mainBom;
 let mainAntiStun;
+let mainDefense;
 
-let data = ['20', '15', '5'];
+let data = [20, 20, 20];
+let data2 = [5, 5, 5, 5, 5, 5];
 
 jQuery(function () {
-  clearError() ;
+  clearError();
   $('#mainDeck').on("change", function () {
     mainDeck = $(this).val();
     checkDeck();
@@ -44,48 +48,56 @@ jQuery(function () {
 
   $('#mainDeckMonster').on("change", function () {
     mainDeckMonster = $(this).val();
-    console.log(mainDeckMonster);
+    data[0] = mainDeckMonster;
+    checkDeck();
   });
 
   $('#mainDeckSpell').on("change", function () {
     mainDeckSpell = $(this).val();
-    console.log(mainDeckSpell);
+    data[1] = mainDeckSpell;
+    checkDeck();
   });
 
   $('#mainDeckTrap').on("change", function () {
     mainDeckTrap = $(this).val();
-    console.log(mainDeckTrap);
-    changeDeckChart(mainDeck, mainDeckMonster, mainDeckSpell, mainDeckTrap);
+    data[2] = mainDeckTrap;
+    checkDeck();
   });
 
   $('#mainStarter').on("change", function () {
     mainStarter = $(this).val();
-    console.log(mainStarter);
+    data2[0] = mainStarter;
+    checkDeck();
   });
 
   $('#mainExtenders').on("change", function () {
     mainExtenders = $(this).val();
-    console.log(mainExtenders);
+    data2[1] = mainExtenders;
+    checkDeck();
   });
 
   $('#mainBom').on("change", function () {
     mainBom = $(this).val();
-    console.log(mainBom);
-  });
-
-  $('#mainDefense').on("change", function () {
-    mainDefense = $(this).val();
-    console.log(mainDefense);
-  });
-
-  $('#mainAntiStun').on("change", function () {
-    mainAntiStun = $(this).val();
-    console.log(mainAntiStun);
+    data2[2] = mainBom;
+    checkDeck();
   });
 
   $('#mainGarnet').on("change", function () {
     mainGarnet = $(this).val();
-    console.log(mainGarnet);
+    data2[3] = mainGarnet;
+    checkDeck();
+  });
+
+  $('#mainDefense').on("change", function () {
+    mainDefense = $(this).val();
+    data2[4] = mainDefense;
+    checkDeck();
+  });
+
+  $('#mainAntiStun').on("change", function () {
+    mainAntiStun = $(this).val();
+    data2[5] = mainAntiStun;
+    checkDeck();
   });
 
 }
@@ -117,11 +129,48 @@ let myChart = new Chart(ctx, {
   }
 });
 
-function changeDeckChart(mainDeck, mainDeckMonster, mainDeckSpell, mainDeckTrap) {
-  myChart.data.datasets.forEach((dataset) => {
-    dataset.data = [mainDeckMonster, mainDeckSpell, mainDeckTrap];
-  });
+let myChart2 = new Chart(ctx2, {
+  type: 'radar',
+  data: {
+    labels: ['Starter', 'Extender', 'Bom', 'Garnet', 'Defensive', 'Anti-stun'],
+    datasets: [{
+      label: 'Targets',
+      data: [11, 12, 0, 1, 6, 6],
+      fill: true,
+      backgroundColor: 'rgba(192,192,192,0.3',
+      borderColor: 'rgb(0, 0, 0)',
+      pointBackgroundColor: 'rgb(0, 0, 0)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 99, 132)'
+
+    },
+    {
+      label: 'Input',
+      data: data2,
+      fill: true,
+      backgroundColor: 'rgba(0,0,255,0.3)',
+      borderColor: 'rgba(0,0,255,0.3)',
+      pointBackgroundColor: 'rgba(0,0,255,0.3)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 99, 132)'
+
+    },
+    ]
+  },
+  options: {
+    elements: {
+      line: {
+        borderWidth: 3
+      }
+    }
+  },
+});
+
+function updateView() {
   myChart.update();
+  myChart2.update();
 }
 
 function setError(message) {
@@ -136,13 +185,16 @@ function clearError() {
 
 function checkDeck() {
   if (mainDeck < 40) {
-    setError('The main deck must have at least 40 cards.')
+    setError('The main deck must have at least 40 cards.');
   } else if (mainDeck > 60) {
-    setError('The main deck can have a max of 60 cards.')
-  } else if (extraDeck > 15) {
-    setError('The extra deck can have a max of 15 cards.')
+    setError('The main deck can have a max of 60 cards.');
+  } else if (parseInt(mainDeck) != (parseInt(mainDeckMonster) + parseInt(mainDeckSpell) + parseInt(mainDeckTrap))) {
+    setError('Please check your card inputs again.');
+  }
+  else if (extraDeck > 15) {
+    setError('The extra deck can have a max of 15 cards.');
   } else if (sideDeck > 15) {
-    setError('The side deck can have a max of 15 cards.')
+    setError('The side deck can have a max of 15 cards.');
   } else clearError();
-
+  updateView();
 }
