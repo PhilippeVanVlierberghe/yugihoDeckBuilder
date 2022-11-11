@@ -4,8 +4,8 @@ const ctx2 = $('#myChart2');
 
 const errorBackgroundColor = 'lightcoral';
 const backgroundColor = 'lightgreen';
-//['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search'],
-const targets = [11, 12, 0, 1, 6, 6, 2, 2];
+//['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search','Stun'],
+const targets = [11, 12, 0, 1, 6, 6, 2, 2, 2];
 
 let mainDeck;
 let extraDeck;
@@ -18,6 +18,7 @@ let mainStarter;
 let mainExtenders;
 let mainBom;
 let mainAntiStun;
+let mainStun;
 let mainDefense;
 let mainDraw;
 let mainSearch;
@@ -89,7 +90,7 @@ jQuery(function () {
     data2[4] = mainDefense;
     checkDeck();
   });
-
+  
   $('#mainAntiStun').on("change", function () {
     mainAntiStun = $(this).val();
     data2[5] = mainAntiStun;
@@ -105,6 +106,12 @@ jQuery(function () {
   $('#mainSearch').on("change", function () {
     mainSearch = $(this).val();
     data2[7] = mainSearch;
+    checkDeck();
+  });
+
+  $('#mainStun').on("change", function () {
+    mainStun = $(this).val();
+    data2[8] = mainStun;
     checkDeck();
   });
 }
@@ -132,7 +139,7 @@ let myChart = new Chart(ctx, {
 let myChart2 = new Chart(ctx2, {
   type: 'radar',
   data: {
-    labels: ['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search'],
+    labels: ['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search', 'Stun'],
     datasets: [{
       label: 'Targets',
       data: targets,
