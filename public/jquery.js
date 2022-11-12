@@ -5,7 +5,7 @@ const ctx2 = $('#myChart2');
 const errorBackgroundColor = 'lightcoral';
 const backgroundColor = 'rgb(0, 180, 0)';
 //['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search','Stun'],
-const targets = [8, 12, 3, 1, 12, 6, 2, 4, 3];
+const targets = [9, 13, 3, 1, 14, 7, 2, 4, 3];
 let input = ['20', '20', '20', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5'];
 let file;
 let arryChart1 = input.slice(3, 6);
