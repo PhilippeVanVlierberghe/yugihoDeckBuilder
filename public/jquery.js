@@ -5,115 +5,99 @@ const ctx2 = $('#myChart2');
 const errorBackgroundColor = 'lightcoral';
 const backgroundColor = 'rgb(0, 180, 0)';
 //['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search','Stun'],
-const targets = [8, 12, 3, 1, 6, 4, 3, 12, 2];
-
-let mainDeck;
-let extraDeck;
-let sideDeck;
-
-let mainDeckMonster;
-let mainDeckSpell;
-let mainDeckTrap;
-let mainStarter;
-let mainExtenders;
-let mainBom;
-let mainAntiStun;
-let mainStun;
-let mainDefense;
-let mainDraw;
-let mainSearch;
-
-let data = [20, 20, 20];
-let data2 = [5, 5, 5, 5, 5, 5, 5, 5];
+const targets = [8, 12, 3, 1, 12, 6, 2, 4, 3];
+let input = ['20', '20', '20', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5'];
+let file;
+let arryChart1 = input.slice(3, 6);
+let arryChart2 = input.slice(4, input.length-1);
 
 jQuery(function () {
   clearError();
+  /*
+  $('#export').on("click", function () {
+    saveData(input);
+  });
+
+  $('#import').on("change", function () {
+    loadData();
+    checkDeck();
+  });*/
+
   $('#mainDeck').on("change", function () {
-    mainDeck = $(this).val();
+    input[0] = $(this).val();
     checkDeck();
   });
 
   $('#extraDeck').on("change", function () {
-    extraDeck = $(this).val();
+    input[1] = $(this).val();
     checkDeck();
   });
 
   $('#sideDeck').on("change", function () {
-    sideDeck = $(this).val();
+    input[2] = $(this).val();
     checkDeck();
   });
 
   $('#mainDeckMonster').on("change", function () {
-    mainDeckMonster = $(this).val();
-    data[0] = mainDeckMonster;
+    input[3] = $(this).val();
     checkDeck();
   });
 
   $('#mainDeckSpell').on("change", function () {
-    mainDeckSpell = $(this).val();
-    data[1] = mainDeckSpell;
+    input[4] = $(this).val();
     checkDeck();
   });
 
   $('#mainDeckTrap').on("change", function () {
-    mainDeckTrap = $(this).val();
-    data[2] = mainDeckTrap;
+    input[5] = $(this).val();
     checkDeck();
   });
 
   $('#mainStarter').on("change", function () {
-    mainStarter = $(this).val();
-    data2[0] = mainStarter;
+    input[6] = $(this).val();
     checkDeck();
   });
 
   $('#mainExtenders').on("change", function () {
-    mainExtenders = $(this).val();
-    data2[1] = mainExtenders;
+    input[7] = $(this).val();
     checkDeck();
   });
 
   $('#mainBom').on("change", function () {
-    mainBom = $(this).val();
-    data2[2] = mainBom;
+    input[8] = $(this).val();
     checkDeck();
   });
 
   $('#mainGarnet').on("change", function () {
-    mainGarnet = $(this).val();
-    data2[3] = mainGarnet;
-    checkDeck();
-  });
-
-  $('#mainDefense').on("change", function () {
-    mainDefense = $(this).val();
-    data2[4] = mainDefense;
-    checkDeck();
-  });
-  
-  $('#mainAntiStun').on("change", function () {
-    mainAntiStun = $(this).val();
-    data2[5] = mainAntiStun;
-    checkDeck();
-  });
-
-  $('#mainDraw').on("change", function () {
-    mainDraw = $(this).val();
-    data2[6] = mainDraw;
+    input[9] = $(this).val();
     checkDeck();
   });
 
   $('#mainSearch').on("change", function () {
-    mainSearch = $(this).val();
-    data2[7] = mainSearch;
+    input[10] = $(this).val();
+    checkDeck();
+  });
+
+  $('#mainDefense').on("change", function () {
+    input[11] = $(this).val();
     checkDeck();
   });
 
   $('#mainStun').on("change", function () {
-    mainStun = $(this).val();
-    data2[8] = mainStun;
+    input[12] = $(this).val();
     checkDeck();
   });
+
+  $('#mainAntiStun').on("change", function () {
+    input[13] = $(this).val();
+    checkDeck();
+  });
+
+  $('#mainDraw').on("change", function () {
+    input[14] = $(this).val();
+    checkDeck();
+  });
+
 }
 );
 
@@ -122,8 +106,8 @@ let myChart = new Chart(ctx, {
   data: {
     labels: ['monster', 'spell', 'trap'],
     datasets: [{
-      label: '# of Votes',
-      data: data,
+      label: '#',
+      data: arryChart1,
       backgroundColor: [
         'rgb(255, 205, 86)',
         'rgb(54, 162, 235)',
@@ -139,7 +123,7 @@ let myChart = new Chart(ctx, {
 let myChart2 = new Chart(ctx2, {
   type: 'radar',
   data: {
-    labels: ['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search', 'Stun'],
+    labels: ['Starter', 'Extender', 'Bomb', 'Garnet', 'Search', 'Defensive', 'Stun', 'Anti-stun', 'Draw'],
     datasets: [{
       label: 'Targets',
       data: targets,
@@ -154,7 +138,7 @@ let myChart2 = new Chart(ctx2, {
     },
     {
       label: 'Input',
-      data: data2,
+      data: arryChart2,
       fill: true,
       backgroundColor: 'rgba(0,0,255,0.3)',
       borderColor: 'rgba(0,0,255,0.3)',
@@ -175,7 +159,18 @@ let myChart2 = new Chart(ctx2, {
   },
 });
 
+function updateData() {
+  input.slice(3, 6).forEach((element, index) => {
+    arryChart1[index] = element;
+  });
+  input.slice(6, input.length).forEach((element, index) => {
+    arryChart2[index] = element;
+  });
+}
+
 function updateView() {
+  console.log(input);
+
   myChart.update();
   myChart2.update();
 }
@@ -191,16 +186,69 @@ function clearError() {
 }
 
 function checkDeck() {
-  if (mainDeck < 40) {
+
+  if (parseInt(input[0]) < 40) {
     setError('The main deck must have at least 40 cards.');
-  } else if (mainDeck > 60) {
+  } else if (parseInt(input[0]) > 60) {
     setError('The main deck can have a max of 60 cards.');
-  } else if (parseInt(mainDeck) != (parseInt(mainDeckMonster) + parseInt(mainDeckSpell) + parseInt(mainDeckTrap))) {
+  } else if (parseInt(input[0]) != (parseInt(input[3]) + parseInt(input[4]) + parseInt(input[5]))) {
     setError('Please check your card inputs again.');
-  } else if (extraDeck > 15) {
+  } else if (parseInt(input[1]) > 15) {
     setError('The extra deck can have a max of 15 cards.');
-  } else if (sideDeck > 15) {
+  } else if (parseInt(input[2]) > 15) {
     setError('The side deck can have a max of 15 cards.');
   } else clearError();
+
+  updateData();
   updateView();
 }
+
+/*
+function loadData() {
+  $.get('DDD.txt', function (dataTemp) {
+    //['Starter', 'Extender', 'Bomb', 'Garnet', 'Search', 'Defensive', 'Stun', 'Anti-stun', 'Draw']
+    const inputTemp = dataTemp.split(',', 15);
+    //todo check values
+    $('#mainDeck').val(inputTemp[0]);
+    $('#extraDeck').val(inputTemp[1]);
+    $('#sideDeck').val(inputTemp[2]);
+    $('#mainDeckMonster').val(inputTemp[3]);
+    $('#mainDeckSpell').val(inputTemp[4]);
+    $('#mainDeckTrap').val(inputTemp[5]);
+    $('#mainStarter').val(inputTemp[6]);
+    $('#mainExtenders').val(inputTemp[7]);
+    $('#mainBom').val(inputTemp[8]);
+    $('#mainGarnet').val(inputTemp[9]);
+    $('#mainSearch').val(inputTemp[10]);
+    $('#mainDefense').val(inputTemp[11]);
+    $('#mainStun').val(inputTemp[12]);
+    $('#mainAntiStun').val(inputTemp[13]);
+    $('#mainDraw').val(inputTemp[14]);
+  });
+
+  input[0] = $('#mainDeck').val();
+  input[1] = $('#extraDeck').val();
+  input[2] = $('#sideDeck').val();
+  input[3] = $('#mainDeckMonster').val();
+  input[4] = $('#mainDeckSpell').val();
+  input[5] = $('#mainDeckTrap').val();
+  input[6] = $('#mainStarter').val();
+  input[7] = $('#mainExtenders').val();
+  input[8] = $('#mainBom').val();
+  input[9] = $('#mainGarnet').val();
+  input[10] = $('#mainSearch').val();
+  input[11] = $('#mainDefense').val();
+  input[12] = $('#mainStun').val();
+  input[13] = $('#mainAntiStun').val();
+  input[14] = $('#mainDraw').val();
+
+}
+
+function saveData() {
+  //todo 
+  var link = document.createElement('a');
+  link.href = 'data:text/plain;charset=UTF-8,' + escape(input);
+  link.download = 'output.txt';
+  link.click();
+}
+*/

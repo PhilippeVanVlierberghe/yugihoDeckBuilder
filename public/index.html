@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <title>Title of the document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script defer type="text/javascript" src="jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
@@ -18,79 +20,74 @@
       <form id='form' name='form'></form>
       <p>Miscellaneous</p>
       <label for="mainDeck">Main deck:</label>
-      <input type="number" id="mainDeck" name="mainDeck" placeholder="Number of cards in the main deck?" min='40'
-        max='60' />
+      <input type="number" id="mainDeck" name="mainDeck" min='40' max='60' />
       <br>
       <label for="extraDeck">Extra deck:</label>
-      <input name='extraDeck' id='extraDeck' type="number" placeholder="Number of cards in the extra deck?" min='0'
-        max='15'>
+      <input name='extraDeck' id='extraDeck' type="number" min='0' max='15'>
       <br>
       <label for="sideDeck">Side deck:</label>
-      <input name='sideDeck' id='sideDeck' type="number" placeholder="Number of cards in the side deck?" min='0'
-        max='15'>
+      <input name='sideDeck' id='sideDeck' type="number" min='0' max='15'>
 
       <p>Engine cards</p>
       <label for="mainDeckMonster">Monster cards:</label>
-      <input name='mainDeckMonster' id='mainDeckMonster' type="number"
-        placeholder="Number of monster cards in the main deck?" min='0' max='60'>
+      <input name='mainDeckMonster' id='mainDeckMonster' type="number" min='0' max='60'>
       <br>
       <label for="mainDeckSpell">Spell cards:</label>
-      <input name='mainDeckSpell' id='mainDeckSpell' type="number" placeholder="Number of spell cards in the main deck?"
-        min='0' max='60'>
+      <input name='mainDeckSpell' id='mainDeckSpell' type="number" min='0' max='60'>
       <br>
       <label for="mainDeckTrap">Trap cards:</label>
-      <input name='mainDeckTrap' id='mainDeckTrap' type="number" placeholder="Number of trap cards in the main deck?"
-        min='0' max='60'>
+      <input name='mainDeckTrap' id='mainDeckTrap' type="number" min='0' max='60'>
       <br>
       <label for="mainStarter">Starter cards:</label>
-      <input name='mainStarter' id='mainStarter' type="number" placeholder="Number of starter cards in the main deck?"
-        max='60'>
+      <input name='mainStarter' id='mainStarter' type="number" max='60'>
       <br>
       <label for="mainExtenders">Extender cards:</label>
-      <input name='mainExtenders' id='mainExtenders' type="number"
-        placeholder="Number of extender cards in the main deck?" min='0' max='60'>
+      <input name='mainExtenders' id='mainExtenders' type="number" min='0' max='60'>
       <br>
       <label for="mainBom">Bomb cards:</label>
-      <input name='mainBom' id='mainBom' type="number" placeholder="Number of bom cards in the main deck?" min='0'
-        max='60'>
+      <input name='mainBom' id='mainBom' type="number" min='0' max='60'>
       <br>
       <label for="mainGarnet">Garnet cards:</label>
-      <input name='mainGarnet' id='mainGarnet' type="number" placeholder="Number of garnet cards in the main deck?"
-        min='0' max='60'>
+      <input name='mainGarnet' id='mainGarnet' type="number" min='0' max='60'>
       <br>
       <label for="mainSearch">Search cards:</label>
-      <input name='mainSearch' id='mainSearch' type="number" placeholder="Number of search cards in the main deck?"
-        min='0' max='60'>
+      <input name='mainSearch' id='mainSearch' type="number" min='0' max='60'>
 
       <p>Non-Engine cards</p>
       <label for="mainDefense">Defensive cards:</label>
-      <input name='mainDefense' id='mainDefense' type="number" placeholder="Number of defensive cards in the main deck?"
-        min='0' max='60'>
+      <input name='mainDefense' id='mainDefense' type="number" min='0' max='60'>
       <br>
       <label for="mainStun">Stun cards:</label>
-      <input name='mainStun' id='mainStun' type="number" placeholder="Number of stun cards in the main deck?" min='0'
-        max='60'>
+      <input name='mainStun' id='mainStun' type="number" min='0' max='60'>
       <br>
       <label for="mainAntiStun">Anti stun cards:</label>
-      <input name='mainAntiStun' id='mainAntiStun' type="number"
-        placeholder="Number of anti-stun cards in the main deck?" min='0' max='60'>
+      <input name='mainAntiStun' id='mainAntiStun' type="number" min='0' max='60'>
       <br>
       <label for="mainDraw">Draw cards:</label>
-      <input name='mainDraw' id='mainDraw' type="number" placeholder="Number of draw cards in the main deck?" min='0'
-        max='60'>
+      <input name='mainDraw' id='mainDraw' type="number" min='0' max='60'>
       </form>
     </div>
     <div class="block">
-      <canvas id="myChart" width="400" height="400"></canvas>
+      <canvas id="myChart" width="350" height="350"></canvas>
     </div>
 
     <div class="block">
-      <canvas id="myChart2" width="400" height="400"></canvas>
+      <canvas id="myChart2" width="350" height="350"></canvas>
     </div>
 
   </div>
   <hr>
   <div class="description">
+    <!--
+    <form>
+      <br>
+      <input class='button' id='export' type="button" value="Export deck">
+
+      <br>
+      <input class='import' type="text" id="import" name="import" placeholder="Name of the import file.">
+
+    </form>
+  -->
     <h3>Target descriptions:</d3>
       <ul>
         <li><strong>Starter</strong>: cards that can start your combo's without help from other cards, for example
@@ -108,7 +105,8 @@
             greed</strong>.</li>
         <li><strong>Search</strong>: cards that search other cards, for example <strong>Elemental Hero Stratos</strong>.
         </li>
-        <li><strong>Stun</strong>: cards prevent your opponent from playing the game, for example <strong>Domain of the True Monarchs</strong>.
+        <li><strong>Stun</strong>: cards prevent your opponent from playing the game, for example <strong>Domain of the
+            True Monarchs</strong>.
         </li>
       </ul>
 
