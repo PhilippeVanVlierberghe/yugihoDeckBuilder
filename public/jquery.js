@@ -6,10 +6,10 @@ const errorBackgroundColor = 'lightcoral';
 const backgroundColor = 'rgb(0, 180, 0)';
 //['Starter', 'Extender', 'Bomb', 'Garnet', 'Defensive', 'Anti-stun', 'Draw', 'Search','Stun'],
 const targets = [9, 13, 3, 1, 14, 7, 2, 4, 3];
-let input = ['20', '20', '20', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5'];
+let input = [];
 let file;
 let arryChart1 = input.slice(3, 6);
-let arryChart2 = input.slice(4, input.length-1);
+let arryChart2 = input.slice(6, input.length);
 
 jQuery(function () {
   clearError();
@@ -103,6 +103,21 @@ jQuery(function () {
 
 let myChart = new Chart(ctx, {
   type: 'pie',
+  plugins: [ChartDataLabels],
+  options: {
+    plugins: {
+      datalabels: {
+        formatter: function(value, context) {
+          return ((value/input[0])*100).toFixed(2)+" %" ;
+        },
+        font :{
+          size : '15em',
+          weight: 'bold',
+          
+        }
+      }
+    }
+},
   data: {
     labels: ['monster', 'spell', 'trap'],
     datasets: [{
@@ -116,7 +131,7 @@ let myChart = new Chart(ctx, {
       borderWidth: 1,
       hoverOffset: 4
 
-    }]
+    }],
   }
 });
 
