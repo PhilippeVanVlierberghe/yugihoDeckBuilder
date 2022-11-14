@@ -13,15 +13,15 @@ let arryChart2 = input.slice(6, input.length);
 
 jQuery(function () {
   clearError();
-  /*
+
   $('#export').on("click", function () {
     saveData(input);
   });
 
   $('#import').on("change", function () {
-    loadData();
+    loadData($(this).val());
     checkDeck();
-  });*/
+  });
 
   $('#mainDeck').on("change", function () {
     input[0] = $(this).val();
@@ -107,17 +107,17 @@ let myChart = new Chart(ctx, {
   options: {
     plugins: {
       datalabels: {
-        formatter: function(value, context) {
-          return ((value/input[0])*100).toFixed(2)+" %" ;
+        formatter: function (value, context) {
+          return ((value / input[0]) * 100).toFixed(2) + " %";
         },
-        font :{
-          size : '15em',
+        font: {
+          size: '15em',
           weight: 'bold',
-          
+
         }
       }
     }
-},
+  },
   data: {
     labels: ['monster', 'spell', 'trap'],
     datasets: [{
@@ -218,52 +218,35 @@ function checkDeck() {
   updateView();
 }
 
-/*
-function loadData() {
-  $.get('DDD.txt', function (dataTemp) {
-    //['Starter', 'Extender', 'Bomb', 'Garnet', 'Search', 'Defensive', 'Stun', 'Anti-stun', 'Draw']
-    const inputTemp = dataTemp.split(',', 15);
-    //todo check values
-    $('#mainDeck').val(inputTemp[0]);
-    $('#extraDeck').val(inputTemp[1]);
-    $('#sideDeck').val(inputTemp[2]);
-    $('#mainDeckMonster').val(inputTemp[3]);
-    $('#mainDeckSpell').val(inputTemp[4]);
-    $('#mainDeckTrap').val(inputTemp[5]);
-    $('#mainStarter').val(inputTemp[6]);
-    $('#mainExtenders').val(inputTemp[7]);
-    $('#mainBom').val(inputTemp[8]);
-    $('#mainGarnet').val(inputTemp[9]);
-    $('#mainSearch').val(inputTemp[10]);
-    $('#mainDefense').val(inputTemp[11]);
-    $('#mainStun').val(inputTemp[12]);
-    $('#mainAntiStun').val(inputTemp[13]);
-    $('#mainDraw').val(inputTemp[14]);
+
+function loadData(dataTemp) {
+  //['Starter', 'Extender', 'Bomb', 'Garnet', 'Search', 'Defensive', 'Stun', 'Anti-stun', 'Draw']
+  const inputTemp = dataTemp.split(',', 15);
+  inputTemp.forEach((e, index) => {
+    input[index] = e;
   });
-
-  input[0] = $('#mainDeck').val();
-  input[1] = $('#extraDeck').val();
-  input[2] = $('#sideDeck').val();
-  input[3] = $('#mainDeckMonster').val();
-  input[4] = $('#mainDeckSpell').val();
-  input[5] = $('#mainDeckTrap').val();
-  input[6] = $('#mainStarter').val();
-  input[7] = $('#mainExtenders').val();
-  input[8] = $('#mainBom').val();
-  input[9] = $('#mainGarnet').val();
-  input[10] = $('#mainSearch').val();
-  input[11] = $('#mainDefense').val();
-  input[12] = $('#mainStun').val();
-  input[13] = $('#mainAntiStun').val();
-  input[14] = $('#mainDraw').val();
-
+  //todo check values
+  $('#mainDeck').val(inputTemp[0]);
+  $('#extraDeck').val(inputTemp[1]);
+  $('#sideDeck').val(inputTemp[2]);
+  $('#mainDeckMonster').val(inputTemp[3]);
+  $('#mainDeckSpell').val(inputTemp[4]);
+  $('#mainDeckTrap').val(inputTemp[5]);
+  $('#mainStarter').val(inputTemp[6]);
+  $('#mainExtenders').val(inputTemp[7]);
+  $('#mainBom').val(inputTemp[8]);
+  $('#mainGarnet').val(inputTemp[9]);
+  $('#mainSearch').val(inputTemp[10]);
+  $('#mainDefense').val(inputTemp[11]);
+  $('#mainStun').val(inputTemp[12]);
+  $('#mainAntiStun').val(inputTemp[13]);
+  $('#mainDraw').val(inputTemp[14]);
 }
 
-function saveData() {
+function saveData(input) {
   //todo 
-  var link = document.createElement('a');
+  let link = document.createElement('a');
   link.href = 'data:text/plain;charset=UTF-8,' + escape(input);
   link.download = 'output.txt';
   link.click();
 }
-*/

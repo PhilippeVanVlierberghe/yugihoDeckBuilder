@@ -67,6 +67,14 @@
       <label for="mainDraw">Draw cards:</label>
       <input name='mainDraw' id='mainDraw' type="number" min='0' max='60'>
       </form>
+      <form>
+        <br>
+        <input class='button' id='export' type="button" value="Export deck">
+  
+        <br>
+        <input class='import' type="txt" id="import" name="import" placeholder="Read text file.">
+  
+      </form>
     </div>
     <div class="block">
       <canvas id="myChart" width="350" height="350"></canvas>
@@ -79,16 +87,7 @@
   </div>
   <hr>
   <div class="description">
-    <!--
-    <form>
-      <br>
-      <input class='button' id='export' type="button" value="Export deck">
 
-      <br>
-      <input class='import' type="text" id="import" name="import" placeholder="Name of the import file.">
-
-    </form>
-  -->
     <h3>Target descriptions:</d3>
       <ul>
         <li><strong>Starter</strong>: cards that can start your combo's without help from other cards, for example
