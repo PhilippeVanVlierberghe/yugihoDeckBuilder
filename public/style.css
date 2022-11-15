@@ -4,14 +4,31 @@ html, body {
 }
 
 #container {
-    margin-top: 1%;
+    margin: 1%;
+    width: 98%;
     display: grid;
-    grid-template-columns: 20% 40% 40%;
+    grid-template-columns: 10% 30% 30% 30%;
     grid-gap: 10px;
 }
 
+#container .block ul {
+    column-count: 2;
+}
+
+#container .block h2 {
+    margin-left: 20%;
+}
+
+#container .block p {
+    margin-left: 5%;
+}
+
+#container .block canvas {
+    padding-top: 5%;
+}
+
 input {
-    width: 15%;
+    width: 20%;
     margin-bottom: 1%;
 }
 
@@ -70,6 +87,6 @@ p {
 }
 
 .import {
-    margin: 1% 10%;
-    width: 80%;
+    margin-top: 1%;
+    width: 95%;
 }

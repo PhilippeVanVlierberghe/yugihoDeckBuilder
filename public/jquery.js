@@ -10,9 +10,36 @@ let input = [];
 let file;
 let arryChart1 = input.slice(3, 6);
 let arryChart2 = input.slice(6, input.length);
+let stapleList;
+//todo 
+//filter banlist https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes&format=tcg&misc=yes&banlist=TCG
 
 jQuery(function () {
   clearError();
+
+  $.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes&format=tcg&misc=yes", function (data) {
+    //
+    console.log("Getting data from ygoprodeck");
+  })
+    .fail(function (error) {
+      console.log(error);
+    })
+    .done(function (data) {
+      console.log("success");
+      stapleList = data.data;
+      stapleList.sort(compare);
+      console.log(stapleList);
+      //https://yugioh.fandom.com/wiki/
+      $.each(stapleList, function (index, element) {
+        let link = 'https://yugipedia.com/wiki/' + element.name.replace(/ /g, "_");
+        $('#stapleList').append("<li><a target=_blank href=" + link + ">"
+          + element.name + "</a> <strong>"
+          + getBan_tcg(element)
+          + element.misc_info[0].upvotes + "</string>"
+          + "</li>");
+      });
+    });
+
 
   $('#export').on("click", function () {
     saveData(input);
@@ -249,4 +276,20 @@ function saveData(input) {
   link.href = 'data:text/plain;charset=UTF-8,' + escape(input);
   link.download = 'output.txt';
   link.click();
+}
+
+function compare(a, b) {
+  if (a.misc_info[0].upvotes < b.misc_info[0].upvotes)
+    return 1;
+  if (a.misc_info[0].upvotes > b.misc_info[0].upvotes)
+    return -1;
+  return 0;
+}
+
+function getBan_tcg(staple) {
+  if (staple.banlist_info === undefined || staple.banlist_info.ban_tcg === undefined) {
+    return '';
+  } else {
+    return '[' + staple.banlist_info.ban_tcg + '] ';
+  }
 }
