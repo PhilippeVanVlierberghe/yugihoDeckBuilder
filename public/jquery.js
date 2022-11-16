@@ -11,19 +11,17 @@ let file;
 let arryChart1 = input.slice(3, 6);
 let arryChart2 = input.slice(6, input.length);
 let stapleList;
-//todo 
 //filter banlist https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes&format=tcg&misc=yes&banlist=TCG
 
-$( function() {
-  $( "#tab" ).tabs();
-} );
+$(function () {
+  $("#tab").tabs();
+});
 
 jQuery(function () {
   clearError();
 
   $.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes&format=tcg&misc=yes", function (data) {
-    //
-    console.log("Getting data from ygoprodeck"); 
+    console.log("Getting data from ygoprodeck");
   })
     .fail(function (error) {
       console.log(error);
@@ -32,7 +30,7 @@ jQuery(function () {
       console.log("success");
       stapleList = data.data;
       stapleList.sort(compare);
-      console.log(stapleList);
+      //console.log(stapleList);
       //https://yugioh.fandom.com/wiki/
       $.each(stapleList, function (index, element) {
         let link = 'https://yugipedia.com/wiki/' + element.name.replace(/ /g, "_");
