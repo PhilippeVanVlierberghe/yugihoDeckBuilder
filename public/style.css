@@ -1,30 +1,24 @@
-html, body {
-    height: 99%;
-    width: 99%;
-}
-
-#container {
-    margin: 1%;
-    width: 98%;
-    display: grid;
-    grid-template-columns: 10% 30% 30% 30%;
-    grid-gap: 10px;
-}
-
-#container .block ul {
+#tabs-4 ul {
     column-count: 2;
 }
 
-#container .block h2 {
-    margin-left: 20%;
+.container {
+    margin: 1%;
 }
 
-#container .block p {
-    margin-left: 5%;
+.grid {
+    display: grid;
+    grid-template-columns: 100% 100%;
+    height: 800px;
+    width: 800px;
+}
+#tabs-3{
+    height: 800px;
+
 }
 
-#container .block canvas {
-    padding-top: 5%;
+#tabs-3 ul{
+    column-count: 3;
 }
 
 input {
@@ -46,19 +40,14 @@ p {
 }
 
 .description>h3 {
-    text-decoration: none;
+    text-decoration: underline;
     font-weight: 100;
     margin-left: 1%;
 }
 
-.block:not(:first-child) {
-    background-color: lightgray;
-    border-radius: 5%;
-}
-
 .button {
-    margin: 1% 10%;
-    width: 83%;
+    margin: 1% 1%;
+    width: 95%;
     box-shadow: 0px 1px 0px 0px #f0f7fa;
     background: linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
     background-color: #33bdef;

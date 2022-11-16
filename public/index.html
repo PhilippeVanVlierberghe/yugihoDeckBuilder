@@ -3,12 +3,15 @@
 
 <head>
   <title>Title of the document</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script defer type="text/javascript" src="jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -16,75 +19,116 @@
   <div class="error">
     <h2 id="error"></h2>
   </div>
-  <div id="container">
-    <div class="block">
-      <form id='form' name='form'></form>
-      <p>Miscellaneous</p>
-      <label for="mainDeck">Main deck:</label>
-      <input type="number" id="mainDeck" name="mainDeck" min='40' max='60' />
-      <br>
-      <label for="extraDeck">Extra deck:</label>
-      <input name='extraDeck' id='extraDeck' type="number" min='0' max='15'>
-      <br>
-      <label for="sideDeck">Side deck:</label>
-      <input name='sideDeck' id='sideDeck' type="number" min='0' max='15'>
+  <div id="tab" class="container">
+    <ul>
+      <li><a href="#tabs-1">Data input</a></li>
+      <li><a href="#tabs-2">Deck charts</a></li>
+      <li><a href="#tabs-3">Staple list</a></li>
+    </ul>
 
-      <p>Engine cards</p>
-      <label for="mainDeckMonster">Monster cards:</label>
-      <input name='mainDeckMonster' id='mainDeckMonster' type="number" min='0' max='60'>
-      <br>
-      <label for="mainDeckSpell">Spell cards:</label>
-      <input name='mainDeckSpell' id='mainDeckSpell' type="number" min='0' max='60'>
-      <br>
-      <label for="mainDeckTrap">Trap cards:</label>
-      <input name='mainDeckTrap' id='mainDeckTrap' type="number" min='0' max='60'>
-      <br>
-      <label for="mainStarter">Starter cards:</label>
-      <input name='mainStarter' id='mainStarter' type="number" max='60'>
-      <br>
-      <label for="mainExtenders">Extender cards:</label>
-      <input name='mainExtenders' id='mainExtenders' type="number" min='0' max='60'>
-      <br>
-      <label for="mainBom">Bomb cards:</label>
-      <input name='mainBom' id='mainBom' type="number" min='0' max='60'>
-      <br>
-      <label for="mainGarnet">Garnet cards:</label>
-      <input name='mainGarnet' id='mainGarnet' type="number" min='0' max='60'>
-      <br>
-      <label for="mainSearch">Search cards:</label>
-      <input name='mainSearch' id='mainSearch' type="number" min='0' max='60'>
+    <div class="block" id="tabs-1">
+      <div class="grid">
+        <form id='form' name='form'>
+          <p>Miscellaneous</p>
+          <label for="mainDeck">Main deck:</label>
+          <input type="number" id="mainDeck" name="mainDeck" min='40' max='60' />
+          <br>
+          <label for="extraDeck">Extra deck:</label>
+          <input name='extraDeck' id='extraDeck' type="number" min='0' max='15'>
+          <br>
+          <label for="sideDeck">Side deck:</label>
+          <input name='sideDeck' id='sideDeck' type="number" min='0' max='15'>
 
-      <p>Non-Engine cards</p>
-      <label for="mainDefense">Defensive cards:</label>
-      <input name='mainDefense' id='mainDefense' type="number" min='0' max='60'>
-      <br>
-      <label for="mainStun">Stun cards:</label>
-      <input name='mainStun' id='mainStun' type="number" min='0' max='60'>
-      <br>
-      <label for="mainAntiStun">Anti stun cards:</label>
-      <input name='mainAntiStun' id='mainAntiStun' type="number" min='0' max='60'>
-      <br>
-      <label for="mainDraw">Draw cards:</label>
-      <input name='mainDraw' id='mainDraw' type="number" min='0' max='60'>
-      </form>
-      <form>
-        <br>
-        <input class='button' id='export' type="button" value="Export deck">
+          <p>Engine cards</p>
+          <label for="mainDeckMonster">Monster cards:</label>
+          <input name='mainDeckMonster' id='mainDeckMonster' type="number" min='0' max='60'>
+          <br>
+          <label for="mainDeckSpell">Spell cards:</label>
+          <input name='mainDeckSpell' id='mainDeckSpell' type="number" min='0' max='60'>
+          <br>
+          <label for="mainDeckTrap">Trap cards:</label>
+          <input name='mainDeckTrap' id='mainDeckTrap' type="number" min='0' max='60'>
+          <br>
+          <label for="mainStarter">Starter cards:</label>
+          <input name='mainStarter' id='mainStarter' type="number" max='60'>
+          <br>
+          <label for="mainExtenders">Extender cards:</label>
+          <input name='mainExtenders' id='mainExtenders' type="number" min='0' max='60'>
+          <br>
+          <label for="mainBom">Bomb cards:</label>
+          <input name='mainBom' id='mainBom' type="number" min='0' max='60'>
+          <br>
+          <label for="mainGarnet">Garnet cards:</label>
+          <input name='mainGarnet' id='mainGarnet' type="number" min='0' max='60'>
+          <br>
+          <label for="mainSearch">Search cards:</label>
+          <input name='mainSearch' id='mainSearch' type="number" min='0' max='60'>
 
-        <br>
-        <input class='import' type="txt" id="import" name="import" placeholder="Read data array">
+          <p>Non-Engine cards</p>
+          <label for="mainDefense">Defensive cards:</label>
+          <input name='mainDefense' id='mainDefense' type="number" min='0' max='60'>
+          <br>
+          <label for="mainStun">Stun cards:</label>
+          <input name='mainStun' id='mainStun' type="number" min='0' max='60'>
+          <br>
+          <label for="mainAntiStun">Anti stun cards:</label>
+          <input name='mainAntiStun' id='mainAntiStun' type="number" min='0' max='60'>
+          <br>
+          <label for="mainDraw">Draw cards:</label>
+          <input name='mainDraw' id='mainDraw' type="number" min='0' max='60'>
+          <br>
+          <input class='button' id='export' type="button" value="Export deck">
 
-      </form>
+          <br>
+          <input class='import' type="txt" id="import" name="import" placeholder="Read data array">
+        </form>
+
+        <div class="description">
+          <h3>Target descriptions:</d3>
+            <ul>
+              <li><strong>Starter</strong>: cards that can start your combo's without help from other cards, for example
+                <strong>Aleister The Invoker</strong>.
+              </li>
+              <li><strong>Extenders</strong>: cards that can special summon monters, for example <strong>Emergency
+                  Teleport</strong>.</li>
+              <li><strong>Bomb</strong>: cards that can clear the field, for example <strong>Dark Hole</strong>.</li>
+              <li><strong>Garnet</strong>: cards that you have to play but you don't want to draw them or see them in
+                your
+                starting hand, for example <strong>Gem-Knight Garnet</strong>.</li>
+              <li><strong>Defensive</strong>: hand traps, for example <strong>Infinite Impermanence</strong>.</li>
+              <li><strong>Anti-stun</strong>: cards that allow you to play the game again, for example <strong>Mystical
+                  Space
+                  Typhoon</strong>.</li>
+              <li><strong>Draw</strong>: cards that allow you to go at least +1 in card advantage, for example
+                <strong>Pot
+                  of
+                  greed</strong>.
+              </li>
+              <li><strong>Search</strong>: cards that search other cards, for example <strong>Elemental Hero
+                  Stratos</strong>.
+              </li>
+              <li><strong>Stun</strong>: cards prevent your opponent from playing the game, for example <strong>Domain
+                  of
+                  the
+                  True Monarchs</strong>.
+              </li>
+            </ul>
+        </div>
+      </div>
     </div>
-    <div class="block">
-      <canvas id="myChart" width="350" height="350"></canvas>
+
+    <div class="block" id="tabs-2">
+      <div class="grid">
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+        <div>
+          <canvas id="myChart2"></canvas>
+        </div>
+      </div>
     </div>
 
-    <div class="block">
-      <canvas id="myChart2" width="350" height="350"></canvas>
-    </div>
-
-    <div class="block">
+    <div class="block" id="tabs-3">
       <h2>Community staple upvote list</h2>
       <ul id="stapleList">
       </ul>
@@ -92,33 +136,6 @@
     </div>
 
   </div>
-  <hr>
-  <div class="description">
-
-    <h3>Target descriptions:</d3>
-      <ul>
-        <li><strong>Starter</strong>: cards that can start your combo's without help from other cards, for example
-          <strong>Aleister The Invoker</strong>.
-        </li>
-        <li><strong>Extenders</strong>: cards that can special summon monters, for example <strong>Emergency
-            Teleport</strong>.</li>
-        <li><strong>Bomb</strong>: cards that can clear the field, for example <strong>Dark Hole</strong>.</li>
-        <li><strong>Garnet</strong>: cards that you have to play but you don't want to draw them or see them in your
-          starting hand, for example <strong>Gem-Knight Garnet</strong>.</li>
-        <li><strong>Defensive</strong>: hand traps, for example <strong>Infinite Impermanence</strong>.</li>
-        <li><strong>Anti-stun</strong>: cards that allow you to play the game again, for example <strong>Mystical Space
-            Typhoon</strong>.</li>
-        <li><strong>Draw</strong>: cards that allow you to go at least +1 in card advantage, for example <strong>Pot of
-            greed</strong>.</li>
-        <li><strong>Search</strong>: cards that search other cards, for example <strong>Elemental Hero Stratos</strong>.
-        </li>
-        <li><strong>Stun</strong>: cards prevent your opponent from playing the game, for example <strong>Domain of the
-            True Monarchs</strong>.
-        </li>
-      </ul>
-
-  </div>
-
 </body>
 
 </html>

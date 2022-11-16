@@ -14,12 +14,16 @@ let stapleList;
 //todo 
 //filter banlist https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes&format=tcg&misc=yes&banlist=TCG
 
+$( function() {
+  $( "#tab" ).tabs();
+} );
+
 jQuery(function () {
   clearError();
 
   $.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes&format=tcg&misc=yes", function (data) {
     //
-    console.log("Getting data from ygoprodeck");
+    console.log("Getting data from ygoprodeck"); 
   })
     .fail(function (error) {
       console.log(error);
